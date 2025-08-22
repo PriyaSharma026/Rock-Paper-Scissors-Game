@@ -21,9 +21,6 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-const humanSelection = getHumanChoice().toLowerCase();
-const computerSelection = getComputerChoice();
-
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === 'rock' && computerChoice === 'scissors') {
         console.log("You Win! Rock beats scissors")
@@ -43,9 +40,22 @@ function playRound(humanChoice, computerChoice) {
     } else if (humanChoice === 'paper' && computerChoice === 'scissors') {
         console.log("You Lose! Scissors beats Paper");
         computerScore++;
-    } else {
-        console.log("OhhNoo! It's a draw")
     }
 }
 
-playRound(humanSelection, computerSelection);
+
+function playGame() {
+    for (let i=1; i<=5; i++) {
+        playRound(getHumanChoice().toLowerCase(), getComputerChoice());
+    }
+
+    if (humanScore > computerScore) {
+        console.log("Wohoo! You win")
+    } else if (humanScore < computerScore) {
+        console.log("Ohho! You Lose")
+    } else {
+        console.log("It's a draw")
+    }
+}
+
+playGame();
